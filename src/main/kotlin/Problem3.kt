@@ -6,7 +6,7 @@ fun main() {
 }
 
 fun getPrimeFactors(number: Long): List<Int> {
-    val primes = Primes()
+    val primes = Primes(1)
     var remainder = number
     val result = mutableListOf<Int>()
     while (remainder != 1L) {
