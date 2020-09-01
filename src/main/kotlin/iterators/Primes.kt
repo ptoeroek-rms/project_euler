@@ -1,6 +1,6 @@
 package iterators
 
-open class Primes(x: Int) : Iterator<Int> {
+open class Primes() : Iterator<Int> {
     private val primes = mutableListOf(2, 3)
     private val firstPrimes = mutableListOf(2, 3)
 
