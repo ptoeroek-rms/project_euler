@@ -6,7 +6,7 @@ fun main() {
 }
 
 fun getNthPrime(index: Int): Int {
-    val primes = Primes()
+    val primes = Primes(2)
     repeat(index) { primes.next() }
     return primes.next()
 }
