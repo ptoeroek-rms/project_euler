@@ -1,5 +1,6 @@
 plugins {
-    kotlin("jvm") version "1.3.31"
+    kotlin("jvm") version "1.5.20"
+    jacoco
 }
 
 repositories {
@@ -8,7 +9,7 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    testImplementation("io.kotlintest:kotlintest-runner-junit5:3.3.2")
+    testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
 }
 
 tasks.compileKotlin {
@@ -24,4 +25,13 @@ tasks.test {
 
     failFast = true
     testLogging.showStandardStreams = true
+
+    finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test) // tests are required to run before generating the report
+    reports {
+        xml.required.set(true)
+    }
 }
